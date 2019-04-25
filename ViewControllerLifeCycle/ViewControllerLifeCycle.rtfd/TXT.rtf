@@ -1,0 +1,426 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+ViewControllerLifeCycle is when your MVC comes alive and does all the things it's going to do and  then dies eventually .\
+\
+ScrollView which allows you to look at large UIViews by panning around them , zooming in on them , etc.  \
+\
+ {{\NeXTGraphic Screenshot 2019-04-24 at 12.07.39 PM.png \width19980 \height4220 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+
+\f1\b \cf0 ViewControllerLifeCycle\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 ViewControllers have a life cycle it's essentially marked by sequences of messages(methods) that are invoked on UIViewController.\
+\
+Why do we care about this at all ?\
+Because at the various stages of the lifecycle the viewcontroller we might want to get involved and do certain things\
+\
+So this lifecycle starts with the creation of your UIViewController for your viewcontroller that you write this is almost always coming out of a storyboard.\
+You drag something out of storyboard you put your views in there thats how you know how to create an MVC \
+So your lifecycle is gonna be when your app runs and you segue to something or it's your first viewController in your storyboard or whatever.\
+Now iOS also has some API which we haven't learned about yet that can hand you a ViewController , that you can then segue to or whatever\
+for e.g. there's a viewcontroller that let's you take a picture with the camera ,  so it can come from code as well as not only out of the storyboard .\
+\
+But once it's created what happens to it and you have already learned a lot about the lifecycle of a viewController \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2019-04-24 at 12.35.35 PM.png \width14800 \height8060 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 (1)Of course the first thing happens after it's created is that it
+\f1\b  get prepared  to be segued t
+\f0\b0 o\
+if it's being put on screen because of a segue the preparation part happens \
+(2)then after that importantly the 
+\f1\b outlets get's set (
+\f0\b0 All your UIButtons and whatever those connections get made )\
+(3)Then your 
+\f1\b view controller appears and possibly disappear on screen
+\f0\b0   (imagine a splitview in portrait mode the master disappears and you can slide it out and then slide it away so it's appearing and disappearing for e.g.)\
+also along the way as all this is happening you might have 
+\f1\b geometry changes most notably you rotate your device
+\f0\b0  and you go from having this tall thin rectangle to a shorter wider rectangle rectangle \
+okay so geometry changes can happens. It can happen for other reasons as well (again in splitview you know your master sometimes it's in the little tall thing on the left sometimes it's a shorter thing on the left and the one thing on the right is sometimes it fills the whole screen or when it's in landscape it feels just a part of the screen )\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 so the geometry is just changing depending on the situation of your viewController \
+(4)lastly and by far at least importantly in 
+\f1\b low memory situations you might have your viewController asked to free up some memory
+\f0\b0  \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
+
+\f1\b \cf0 All the methods that get sent to your viewController  when all these things happen  \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 Notice this in all of this I am calling super\
+You always do that , Do not forget to do that \
+Dont forget to do super give you super class to find out it's appearing or it got loaded or whatever \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
+
+\f0\b0 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 (1)
+\f0\b0  
+\f1\b viewDidLoad()  
+\f0\b0 :-\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2019-04-24 at 12.48.21 PM.png \width14660 \height5760 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+It's really powerful place to do 
+\f1\b initialization because you are already prepared and all your outlets are set 
+\f0\b0 \
+So it's great for that and we usually put most of our initialization in viewDidLoad with one hugh exception  (Geometry)\
+(******)
+\f1\b when viewDidLoad() runs your bounds have not been set yet 
+\f0\b0 \
+(******)
+\f1\b So do not put things in here that have to with the size you are on the screen because you have not been fitted to whatever device you are on
+\f0\b0 \
+(******) 
+\f1\b Very important and very common mistake to put stuff in here and then you just wonder why  when you run it on a different device your code doesn't work anymore , So do not put geometry \
+\pard\tx560\tx1120\tx1234\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0  viewDidLoad 
+\f1\b is only ever called once in the lifetime 
+\f0\b0 of your viewController , 
+\f1\b It's just called once after you are prepared and your outlets are setup it gets called once and that''s it\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+(2)viewWillAppear()  :-\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 {{\NeXTGraphic Screenshot 2019-04-24 at 1.18.06 PM.png \width13920 \height6080 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\f1\b \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 It's exactly what it sounds like your viewController view is about to appear on screen .\
+So this is where you can catchup with stuff that might have gone on in the world while you are not on screen Or it's the first time you are coming on screen catchup with the state of the world \
+So this is really a place to kind of load up your view with all the information for your model \
+especially if your model can change like let's say your model is a network database , other people are editing it so it can change so here's where you want to get up to date because when your view is not on screen you don't want your viewController to be doing much work . It just want's to kind of sit there quietly and then when it's time to come back then it does it's whole setup 
+\f1\b .\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 One thing to notice about viewWillAppear ofCourse is that it can be called repeatedly
+\f0\b0  because your viewController could go away and come back repeatedly.\
+viewWillAppear obviously can be called everytime  you are gonna come back on screen \
+\
+\
+(3)
+\f1\b viewDidAppear() :-\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 {{\NeXTGraphic Screenshot 2019-04-24 at 3.21.50 PM.png \width14540 \height7840 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \
+\pard\tx560\tx1120\tx1293\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 This is called after you have come on screen
+\f0\b0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+Now what would you wanna do here ?\
+It's a little late to do things like update your view from your model here because things are on-screen , you don't want things to come on screen wrong and then 
+\f1\b viewDidAppear  
+\f0\b0 and now you have cleaned them up .\
+\
+(*****)But this is a great place to do things like start an animation because you can't do that in 
+\f1\b viewWillAppear() 
+\f0\b0 you are not on screen yet right , start a timer that does something on screen , start observing something in the world like GPS locations or may be the gyro position of your phone .\
+\
+(******)Those are all the things you can do once you are on the screen , that's what viewDidAppear is really good for.\
+\
+One other thing that you can do in viewDidAppear is maybe kick off a very expensive thing , something you don't wanna kick off in viewDidLoad because when viewDidLoad happens your viewController may not actually appear on screen .\
+There's no guarantee that anyone ever going to actually put you on screen .So viewDidLoad is not  a great \
+Even viewWillAppear might surprisingly get called on you and then you don't actually appear on screen.\
+So viewDidAppear you know you are on screen so it's worth it do something expensive \
+Now what would be something expensive  , oh let's say you wanna fetch a hugh image off the network  , almost anytime you are gonna do something on the network it's pretty expensive because on aphone maybe you only have a cellular connection it's aa bad connection you are out in the country roads somewhere it's barely getting any your said so it could be really quite expensive .\
+For the same reason these expensive things we almost always do them in the background .\
+
+\f1\b Putting things in background is important because it is absolutely primary goal , primary thing you must do with any iOS app is you never block the user interface experience . Users always has to be able to touch on things ,swipe things around if they swipe or touch and your app is frozen they will not use your app .\
+And the way we do this is putting things that would block like waiting for something on the network off the main queue we call it off the main thread into these background process \
+viewDidApppear is a good place to kick those things off , 
+\f0\b0 because you don't waste their cellular data usage fetching an image if you are not actually going to appear \
+\
+Now what this means though is since you are kicking this off in the background when you have already appeared on the screen , you have to design your UI so that they always work even if the expensive thing is not come back yet , \
+that expensive thing might take 10 minutes or might never come back because of bad network , so you have to put placeholder or spinning wheels or loading ... or some animation that shows the user yeah I'm fetching your thing , I am working on it but it's your UI sauce to be fully responsive if they are in the navigation control  they have to be able to hit back and give up. Or they have to hit a tab at the bottom and go to a different tab or whatever they wanna do .\
+So designing UI that are like that take a little bit adjustments .\
+So far you haven't had to do that probably so you are mostly thinking linearly , I am going to put this image on screen so I will go get the image then I will put it on screen well you can't think like that\
+you have to think I want to put this on screen so I will put an image displaying thing on screen  that is not loaded with a little spinner and then later user can do whatever they want  and then later when the picture arrives now I will update my UI to show that image , so it's a little bit kind of thinking with that another dimension the dimension of time.\
+\
+\
+(4)
+\f1\b viewWillDisappear()  :-\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 {{\NeXTGraphic Screenshot 2019-04-24 at 3.25.30 PM.png \width13400 \height5580 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 You get this right before you go away \
+this is a great place to undo what you did in 
+\f1\b viewDidAppear()
+\f0\b0 \
+ Okay so started a timer or started some animation or started watching GPS or something like that this is a good place to stop doing that , because you now know that you are going to disappear ,\
+Okay and then when you reappear you will turn it back on in   
+\f1\b viewDidApppear()
+\f0\b0   so they   kinda work together these two \
+\
+\pard\tx560\tx1120\tx1379\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 (5)viewDidDisappear()
+\f0\b0  :-\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2019-04-24 at 3.54.32 PM.png \width14860 \height6980 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1379\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 This one gets sent to you after you have completely disappeared \
+usually we don't do much here but you 
+\f1\b could imagine maybe cleaning up MVC here possibly saving some state something 
+\f0\b0 \
+But this one is rarely used \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
+
+\f1\b \cf0 Geometry
+\f0\b0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2019-04-24 at 5.07.46 PM.png \width14340 \height7020 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\f1\b \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 We cant do geometry in viewDidLoad\
+So where do you do geometry\
+well you might think I can do it in viewWillAppear() because I am just about to appear and so my geometry will be right ....!!!!\
+ "No" you would think that would be wrong , obviously you can't do it in viewDidAppear() because now you are already on screen it's too late to do anything about geometry .\
+So the place you do geometry  is these 2 methods \
+\
+
+\f1\b override func viewWillLayoutSubviews()\
+override func viewDidLayoutSubviews()
+\f0\b0 \
+\
+This 2 methods are sent to your controller when it's view you know the 
+\f1\b self.view 
+\f0\b0 right the top-level view of the controller that 
+\f1\b var view
+\f0\b0  when \
+that view just before and just after that view is sent layout   
+\f1\b LayoutSubviews 
+\f0\b0  \
+\
+\
+(*****)So why would that top-level view be sent 
+\f1\b LayoutSubviews
+\f0\b0   ???\
+
+\f1\b  same reason any other view may be subviews came and went out of it that's a common one  or \
+it's bounds changed \
+
+\f0\b0 \
+so this is why this a good place to put geometry changes okay because here this is always going to happen when the bounds of your top-level view change .\
+\
+Now usually you don't need to implement these methods ...!!!!\
+Why??\
+because you use an auto-layout (all that control dragging and pinning things to the edges keeping things in the center , fixing aspect ratio , all that business you are doing that and that is automatically being evoked in the 
+\f1\b LayoutSubviews
+\f0\b0  of your top-level view so you don't actually need to do anything in your controller )\
+But if you do feel like you need to do something in the controller this is definitely the place to do it \
+\
+\
+now one  thing about these 2 methods you have to be aware of they could be called quite often and at times you might be surprised ...!!!\
+Whoa nothing changed the bounds didn't changed , nothing changed with the subviews why did this get called ???\
+Well the system is allowed to layout the subViews to ensure the layout of the  subViews of any view at any time , may be it wants to do an animation and it's layout out the beginning and end stage that it's going to do a flip between or something .\
+The bounds have not changed but it wants to make sure the views are laid out or it's laying them out in the destination you know the end of the animation ,etc.\
+So it doesn't matter why but the system has allowed to call it anytime at once and so since it can call 
+\f1\b layoutSubviews
+\f0\b0  anytime these could also be called anytime. \
+So you want to make sure these if you do something really as a reaction to your bounds changing , you want to make sure these methods properly and efficiently work , even if they are repeatedly  called, they might be called twice in the row with exact same bounds for e.g. so you would wanna know if you had to do something very complicated and expensive certainly wouldn't wanna to do it twice in a row So that's geometry \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
+
+\f1\b \cf0 Autorotation
+\f0\b0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2019-04-24 at 5.11.53 PM.png \width14260 \height6020 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+Now there's a special case of your geometry changing which is autorotation , This is when you turn your device from landscape to portrait or back and forth and when this happens of course you get that  
+\f1\b layoutSubviews 
+\f0\b0 thing because your view bounds change and so you get new layout .\
+But you also have this animation that's free going on so iOS automatically animates the moving of all of your subviews from the portrait layout subviews to  landscape layout subviews positions .\
+It does that for you now that's great that saves you lot of work but for some reason you wanna participate in that animation .\
+Now why would that be ???\
+ The calculator app in the iPhone , when it's portrait the buttons are really big and there's not very many calculations buttons like *,+,-,/  that's about it \
+But when you switch to landscape mode now the buttons get small and there's a whole bunch square root, logarithms all kinds of other things , \
+when this rotation happens the calculator apps wants to get involved because it wants to animate those extra buttons appearing on screen may be\
+Also the layout changes from being kind big buttons in the middle to those buttons being on the side and new buttons appearing ,\
+So that's where you might want to participate .\
+\
+So how do you use method \
+viewWillTransition()\{\
+ to size : CGSize,\
+with coordinator : UIViewControllerTransitionCoordinator\
+\} \
+\
+to do that well the coordinator that's passed you is the animation coordinator \
+It has a method in it called animate alongside transition \
+and in there you can provide it  animation block (closure) and do your animation  and that animation will be performed alongside the animation the system does when it rotates .\
+90% of time you don't need to do that .\
+\
+E.g. used in Assignment 4 when your are dealing cards and device is rotated the card will be placed at wrong place so you have to tune animation in this where animation is taken over by autorotation. this is kinda a advanced animation stuff.\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
+
+\f1\b \cf0 Low Memory \
+
+\f0\b0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2019-04-24 at 5.40.19 PM.png \width14540 \height6920 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+Last one and definitely the least one is definitely the low memory .\
+This would only be and if you would have only any interest in this if your app had large memory items like videos ,images, huge sound files very high resolution , big sound files for e.g.  and you know it is possible that an iOS device that had many apps that were doing a lot of big photos manipulation or something that it could possibly load run low on memory , most new one's has so much memory this doesn't ever happen\
+\
+ 
+\f1\b but may be if you had an app that had a memory leak that was leaking  big images in memory then  it could happen but anyway you will be sent this when that happens and all this is asking your view controller here is please release anything from the heap that you can recreate fairly easily later , okay or when you need it and so it's kinda of a memory cleanup kind of thing .
+\f0\b0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 One thing I will say is if your app is leaking in the heap and you are getting larger and larger and larger and it sends this to you and you have bad code and you don't know how to clean it up and you continue to leak iOS can kill you .
+\f0\b0 \
+\
+Okay So if you are a big memory hog and you keep leaking you can be killed so just it's kind of the dangers of being bad programmer , or I guess drive and get killed almost never happens though .\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
+
+\f1\b \cf0 Waking up from an storyboard\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2019-04-24 at 5.53.27 PM.png \width14720 \height6360 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\
+The last thing is actually back to the beginning which is waking up from a storyboard ,\
+\
+This is not strictly part of the viewcontroller lifecycle  but I put it in here because any object that comes out of a storyboard all your UIViews and your viewcontroller  get to sent 
+\f1\b awakeFromNib() 
+\f0\b0 \
+\
+
+\f1\b This is sent very early , right after initialization before preparation before your outlets are set \
+
+\f0\b0 \
+I tend to stay away from trying to use this unless I really do need something set early , \
+we use this in the demo the other day because I wanted my master of my splitView to be the delegate of splitView really early before the splitView  started collapsing things on top of other things  I wanted to get myself in there as the delegate but normallly you don't put things in 
+\f1\b awakeFromNib()  
+\f0\b0 and I would say try to put it in one of the other one's first and if you really needed this early then you can do it in 
+\f1\b awakeFromNib()  
+\f0\b0 of course this is only going to work for MVC that come out of storyboards but again that's almost always yours . Your once always come out of storyboards  it's only the system one's like the camera one that you get from code .\
+\
+\
+\
+\
+\
+\
+\
+ \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2019-04-24 at 6.03.21 PM.png \width13500 \height6660 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+You are instantiated usually from a storyboard but sometimes you can ask iOS for a viewController\
+Then you get awakeFromNib() , if you are coming out of storyboard \
+then segue preparation happens , okay some other MVC prepares you , note that your outlets are not set yet \
+then your outlets get set , get wired up by iOS\
+then viewDidLoad() gets called \
+Then you appear and disappear off screen and you get those view will and did   appear and disappear back and forth\
+at any point along here your geometry might change causing viewWillLayoutSubviews() and viewDidLayoutSubviews() to get called probably with autolayout happenning in between those two calls because layoutSubviews will cause autolayout to happen\
+and if at anytime you start using a lot of memory or even just the whole device uses a lot of memory you might get this didReceiveMemoryWarning  which you can hopefully clean up something too but often you just cant  because you just don't have anything big \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+}

@@ -24,6 +24,7 @@
 		2CBA3DB822592E15002F37A1 /* String.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBA3DB722592E15002F37A1 /* String.rtf */; };
 		2CBA3DBA22593F87002F37A1 /* NSAttributedStrings.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBA3DB922593F87002F37A1 /* NSAttributedStrings.rtf */; };
 		9B1DA26D22644DAC008C5231 /* ConcentrationThemeChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1DA26C22644DAC008C5231 /* ConcentrationThemeChooserViewController.swift */; };
+		9B9E66502271BB2D0009E4C3 /* ViewControllerLifeCycle.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 9B9E664F2271BB2D0009E4C3 /* ViewControllerLifeCycle.rtfd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		2CBA3DB722592E15002F37A1 /* String.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = String.rtf; sourceTree = "<group>"; };
 		2CBA3DB922593F87002F37A1 /* NSAttributedStrings.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = NSAttributedStrings.rtf; sourceTree = "<group>"; };
 		9B1DA26C22644DAC008C5231 /* ConcentrationThemeChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationThemeChooserViewController.swift; sourceTree = "<group>"; };
+		9B9E664F2271BB2D0009E4C3 /* ViewControllerLifeCycle.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = ViewControllerLifeCycle.rtfd; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,21 +81,14 @@
 			isa = PBXGroup;
 			children = (
 				2C0F44C82248C57700E468FC /* Supporting Files */,
+				9B9E66512271BB4B0009E4C3 /* Previous Multiple MVC docs */,
 				2C0F44B82248C52300E468FC /* ConcentrationViewController.swift */,
 				2C0F44C92248EDDC00E468FC /* Concentration.swift */,
 				2C0F44CB2248EF4B00E468FC /* Card.swift */,
 				2C0F44BA2248C52300E468FC /* Main.storyboard */,
 				2C0F44C22248C52500E468FC /* Info.plist */,
-				2C6F6F722250EC850018E723 /* Extensions.rtf */,
-				2C6F6F9222511DDA0018E723 /* Protocols.rtf */,
-				2C1BE9EE2263A11E0074263D /* MultipleMVC,Timer and Animation.rtfd */,
-				2C7F683F2258A10A0057E51D /* ARC.rtf */,
-				2C7F68412258A34B0057E51D /* ARC.pdf */,
-				2CBA3DB722592E15002F37A1 /* String.rtf */,
-				2CBA3DB922593F87002F37A1 /* NSAttributedStrings.rtf */,
-				2C79A7A6225BB8C300B620FC /* FunctionTypes.rtf */,
 				9B1DA26C22644DAC008C5231 /* ConcentrationThemeChooserViewController.swift */,
-				2C510160226A1BD200846709 /* Timer.rtfd */,
+				9B9E664F2271BB2D0009E4C3 /* ViewControllerLifeCycle.rtfd */,
 			);
 			path = ViewControllerLifeCycle;
 			sourceTree = "<group>";
@@ -106,6 +101,22 @@
 				2C0F44BF2248C52500E468FC /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9B9E66512271BB4B0009E4C3 /* Previous Multiple MVC docs */ = {
+			isa = PBXGroup;
+			children = (
+				2C6F6F722250EC850018E723 /* Extensions.rtf */,
+				2C6F6F9222511DDA0018E723 /* Protocols.rtf */,
+				2C1BE9EE2263A11E0074263D /* MultipleMVC,Timer and Animation.rtfd */,
+				2C7F683F2258A10A0057E51D /* ARC.rtf */,
+				2C7F68412258A34B0057E51D /* ARC.pdf */,
+				2CBA3DB722592E15002F37A1 /* String.rtf */,
+				2CBA3DB922593F87002F37A1 /* NSAttributedStrings.rtf */,
+				2C79A7A6225BB8C300B620FC /* FunctionTypes.rtf */,
+				2C510160226A1BD200846709 /* Timer.rtfd */,
+			);
+			path = "Previous Multiple MVC docs";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +184,7 @@
 				2CBA3DB822592E15002F37A1 /* String.rtf in Resources */,
 				2C510161226A1BD300846709 /* Timer.rtfd in Resources */,
 				2CBA3DBA22593F87002F37A1 /* NSAttributedStrings.rtf in Resources */,
+				9B9E66502271BB2D0009E4C3 /* ViewControllerLifeCycle.rtfd in Resources */,
 				2C7F68402258A10A0057E51D /* ARC.rtf in Resources */,
 				2C6F6F732250EC850018E723 /* Extensions.rtf in Resources */,
 				2C0F44BC2248C52300E468FC /* Main.storyboard in Resources */,
