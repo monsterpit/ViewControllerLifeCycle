@@ -10,9 +10,14 @@
 import UIKit
 
 //Renaming class name to ConcentrationViewController from ViewController using cmd + click
-class ConcentrationViewController: UIViewController {
+// changed UIViewController to VCLLoggingViewController So now it inherits all ability to print out all those viewcontroller life cycle methods
+class ConcentrationViewController: VCLLoggingViewController {
     
     private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+    
+    override var vclLoggingName: String{
+        return "Game"
+    }
     
     var numberOfPairsOfCards : Int {
         return (cardButtons.count+1)/2

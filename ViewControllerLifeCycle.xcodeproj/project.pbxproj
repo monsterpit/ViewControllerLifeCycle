@@ -25,6 +25,7 @@
 		2CBA3DBA22593F87002F37A1 /* NSAttributedStrings.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBA3DB922593F87002F37A1 /* NSAttributedStrings.rtf */; };
 		9B1DA26D22644DAC008C5231 /* ConcentrationThemeChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1DA26C22644DAC008C5231 /* ConcentrationThemeChooserViewController.swift */; };
 		9B9E66502271BB2D0009E4C3 /* ViewControllerLifeCycle.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 9B9E664F2271BB2D0009E4C3 /* ViewControllerLifeCycle.rtfd */; };
+		9B9E66552271BD070009E4C3 /* VCLLoggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9E66542271BD070009E4C3 /* VCLLoggingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		2CBA3DB922593F87002F37A1 /* NSAttributedStrings.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = NSAttributedStrings.rtf; sourceTree = "<group>"; };
 		9B1DA26C22644DAC008C5231 /* ConcentrationThemeChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationThemeChooserViewController.swift; sourceTree = "<group>"; };
 		9B9E664F2271BB2D0009E4C3 /* ViewControllerLifeCycle.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = ViewControllerLifeCycle.rtfd; sourceTree = "<group>"; };
+		9B9E66542271BD070009E4C3 /* VCLLoggingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCLLoggingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +85,13 @@
 				2C0F44C82248C57700E468FC /* Supporting Files */,
 				9B9E66512271BB4B0009E4C3 /* Previous Multiple MVC docs */,
 				2C0F44B82248C52300E468FC /* ConcentrationViewController.swift */,
+				9B1DA26C22644DAC008C5231 /* ConcentrationThemeChooserViewController.swift */,
 				2C0F44C92248EDDC00E468FC /* Concentration.swift */,
 				2C0F44CB2248EF4B00E468FC /* Card.swift */,
 				2C0F44BA2248C52300E468FC /* Main.storyboard */,
 				2C0F44C22248C52500E468FC /* Info.plist */,
-				9B1DA26C22644DAC008C5231 /* ConcentrationThemeChooserViewController.swift */,
 				9B9E664F2271BB2D0009E4C3 /* ViewControllerLifeCycle.rtfd */,
+				9B9E66542271BD070009E4C3 /* VCLLoggingViewController.swift */,
 			);
 			path = ViewControllerLifeCycle;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B9E66552271BD070009E4C3 /* VCLLoggingViewController.swift in Sources */,
 				9B1DA26D22644DAC008C5231 /* ConcentrationThemeChooserViewController.swift in Sources */,
 				2C0F44B92248C52300E468FC /* ConcentrationViewController.swift in Sources */,
 				2C0F44B72248C52300E468FC /* AppDelegate.swift in Sources */,
